@@ -1,19 +1,15 @@
 import { Router } from "express";
+
 import {
-    getAllEstudiantes,
-    getEstudianteById,
-    createEstudiante,
-    updateEstudiante,
-    deleteEstudiante,
+  login,
+  logout,
+  session,
+  register,
+} from "../controllers/session.controllers.js";
 
-} from "../controllers/characters.controllers.js";
+export const routeSession = Router();
 
-const router = Router();
-
-router.get("/", getAllEstudiantes);
-router.get("/:id", getEstudianteById);
-router.post("/", createEstudiante);
-router.put("/:id", updateEstudiante);
-router.delete("/:id", deleteEstudiante);
-
-export default router;
+routeSession.post("/login", login);
+routeSession.get("/session", session);
+routeSession.post("/logout", logout);
+routeSession.post("/register", register);
