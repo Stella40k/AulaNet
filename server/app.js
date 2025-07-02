@@ -1,20 +1,43 @@
+import cors from "cors";
 import express from "express";
-import rutaPersonajes from "./src/routes/character.routes.js";
-import dotenv from "dotenv"; //dotenv sirve para las variables de entorno (.env) mantiendolas ocultas
-import { startDb } from "./src/config/database.js";
+import session from "express-session";
+import morgan from "morgan";
+import path from "path";
+import { routeSession } from "./src/routes/session.routes.js";
+import { connectDB } from "./src/db/database.js";
 
-dotenv.config(); // lee el archivo .env
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
-// convierte la información en json
+const __dirname = path.resolve();
+
+// Middlewares
+app.use(
+  cors({
+    // Permitir solicitudes desde el front-end
+    origin: ["http://localhost:5500", "http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Habilitar envío de cookies
+  })
+);
+app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "mi_secreto",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false, // true solo si usas HTTPS
+      httpOnly: true, // evita acceso a cookie desde JavaScript del cliente
+      // sameSite: 'lax' // permite envío de cookies en navegadores modernos
+    },
+  })
+);
 
-// esto es simplemente qué queremos que pase cuando esa ruta suceda 
-app.use("/api/characters", rutaPersonajes);
+app.use("/api", routeSession);
 
-// Inicia el servidor con el típico mensaje de que el servidor está funcionando
-app.listen(PORT, async () => {
-  await startDb();
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}/`)
+);
