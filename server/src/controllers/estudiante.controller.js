@@ -1,4 +1,4 @@
-import Estudiantes from "../models/character.model.js";
+import Estudiantes from "../models/estudiante.model..js";
 
 // Acá va a ir lo del CRUD (Create, Read, Update, Delete)
 
@@ -12,7 +12,6 @@ export const getAllEstudiantes = async (req, res) => {
     }
 };
 
-// Obtener 1 personaje
 export const getEstudianteById = async (req, res) => {
     try {
         const estudiante = Estudiantes.findByPk(req.params.id);

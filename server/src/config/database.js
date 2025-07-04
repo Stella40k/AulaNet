@@ -25,4 +25,3 @@ export const startDb = async () => {
   console.error('Hubo un problema al conectar:', error);
 }
 }
-

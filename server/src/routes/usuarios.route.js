@@ -6,7 +6,7 @@ import {
     updateEstudiante,
     deleteEstudiante,
 
-} from "../controllers/characters.controllers.js";
+} from "../controllers/usuarios.controller.js";
 
 const router = Router();
 
