@@ -1,43 +1,32 @@
-import cors from "cors";
-import express from "express";
-import session from "express-session";
-import morgan from "morgan";
-import path from "path";
-import { routeSession } from "./src/routes/session.routes.js";
-import { connectDB } from "./src/db/database.js";
+import express from 'express';
+import bodyParser from 'body-parser'; // necesario para leer POST
+import path from 'path';
 
 const app = express();
-const PORT = process.env.PORT || 4000;
-
 const __dirname = path.resolve();
 
-// Middlewares
-app.use(
-  cors({
-    // Permitir solicitudes desde el front-end
-    origin: ["http://localhost:5500", "http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // Habilitar envío de cookies
-  })
-);
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-app.use(
-  session({
-    secret: "mi_secreto",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: false, // true solo si usas HTTPS
-      httpOnly: true, // evita acceso a cookie desde JavaScript del cliente
-      // sameSite: 'lax' // permite envío de cookies en navegadores modernos
-    },
-  })
-);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public'))); // para servir HTML y CSS
 
-app.use("/api", routeSession);
+// Página principal luego de iniciar sesión
+app.get('/home', (req, res) => {
+  res.send('<h1>Bienvenido a la página principal</h1>');
+});
 
-app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}/`)
-);
+// Login POST
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // 🛡️ Lógica básica de autenticación (deberías usar DB real aquí)
+  if (email === 'alumno@ejemplo.com' && password === '1234') {
+    // Login exitoso → redireccionar a home
+    res.redirect('/home');
+  } else {
+    // Login fallido → mensaje
+    res.send('<h3>Credenciales incorrectas</h3><a href="/">Volver</a>');
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Servidor iniciado en http://localhost:3000');
+});
