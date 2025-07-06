@@ -1,0 +1,21 @@
+import { Sequelize } from "sequelize";
+import "dotenv/config";
+
+export const sequelize = new Sequelize(
+    process.env.DB_HOST,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    process.env.DB_NAME,
+    {
+        host: process.env.DB_HOST,
+        dialect: process.env.DB_DIALECT
+     });
+
+export const connect = async() => {
+    try {
+        await sequelize.authenticate();
+        console.log("Conexion exitosa");
+    } catch (error) {
+        console.log("Error en la conexion a la base de datos");
+    }
+}
