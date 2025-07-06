@@ -1,32 +1,22 @@
-import express from 'express';
-import bodyParser from 'body-parser'; // necesario para leer POST
-import path from 'path';
+import express from "express";
+import rutaUsuarios from "./src/routes/usuarios.route.js";
+import rutaMaterias from "./src/routes/materias.route.js";
+import dotenv from "dotenv"; //dotenv sirve para las variables de entorno (.env) mantiendolas ocultas
+import { startDb } from "./src/config/database.js";
 
+dotenv.config(); // lee el archivo .env
 const app = express();
-const __dirname = path.resolve();
+const PORT = process.env.PORT 
+// convierte la información en json
+app.use(express.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public'))); // para servir HTML y CSS
+// esto es simplemente qué queremos que pase cuando esa ruta suceda
+app.use("/api/users", rutaUsuarios);
+app.use("/api/subjects", rutaMaterias);
+app.use("/api/user/create")
 
-// Página principal luego de iniciar sesión
-app.get('/home', (req, res) => {
-  res.send('<h1>Bienvenido a la página principal</h1>');
-});
-
-// Login POST
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-
-  // 🛡️ Lógica básica de autenticación (deberías usar DB real aquí)
-  if (email === 'alumno@ejemplo.com' && password === '1234') {
-    // Login exitoso → redireccionar a home
-    res.redirect('/home');
-  } else {
-    // Login fallido → mensaje
-    res.send('<h3>Credenciales incorrectas</h3><a href="/">Volver</a>');
-  }
-});
-
-app.listen(3000, () => {
-  console.log('Servidor iniciado en http://localhost:3000');
+// Inicia el servidor con el típico mensaje de que el servidor está funcionando
+app.listen(PORT, async () => {
+  await startDb();
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

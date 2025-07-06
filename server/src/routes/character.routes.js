@@ -1,4 +1,4 @@
-import { Router } from "express";
+/* import { Router } from "express";
 
 
 import {
@@ -6,11 +6,11 @@ import {
     logout,
     session,
     register,
-} from //aca va la importacion de los controladores
+} from; //aca va la importacion de los controladores;
 
-export const routeSession = Router();
+export const routeSession = Router()
 
 routeSession.post("/login", login);
 routeSession.get("/session", session);
 routeSession.post("/logout", logout);
-routeSession.post("/register", register);
+routeSession.post("/register", register); */
