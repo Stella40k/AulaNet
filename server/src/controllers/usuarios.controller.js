@@ -218,7 +218,7 @@ export const updateUser = async (req, res) => {
   }
 };
 
-// Eliminar estudiantes
+// Eliminar usuarios
 export const deleteUser = async (req, res) => {
   try {
     const usuario = await Usuarios.findByPk(req.params.id);
