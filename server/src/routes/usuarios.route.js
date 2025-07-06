@@ -1,19 +1,18 @@
 import { Router } from "express";
 import {
-    getAllEstudiantes,
-    getEstudianteById,
-    createEstudiante,
-    updateEstudiante,
-    deleteEstudiante,
-
+  getAllUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
 } from "../controllers/usuarios.controller.js";
 
 const router = Router();
 
-router.get("/", getAllEstudiantes);
-router.get("/:id", getEstudianteById);
-router.post("/", createEstudiante);
-router.put("/:id", updateEstudiante);
-router.delete("/:id", deleteEstudiante);
+router.get("/", getAllUsers);
+router.get("/:id", getUserById);
+router.post("/", createUser);
+router.put("/:id", updateUser);
+router.delete("/:id", deleteUser);
 
 export default router;

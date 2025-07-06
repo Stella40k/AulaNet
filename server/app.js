@@ -1,5 +1,5 @@
 import express from "express";
-import rutaPersonajes from "./src/routes/usuarios.route.js";
+import rutaUsuarios from "./src/routes/usuarios.route.js";
 import dotenv from "dotenv"; //dotenv sirve para las variables de entorno (.env) mantiendolas ocultas
 import { startDb } from "./src/config/database.js";
 
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // esto es simplemente qué queremos que pase cuando esa ruta suceda
-app.use("/api/characters", rutaPersonajes);
+app.use("/api/users", rutaUsuarios);
 
 // Inicia el servidor con el típico mensaje de que el servidor está funcionando
 app.listen(PORT, async () => {

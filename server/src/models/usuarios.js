@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database";
+import { sequelize } from "../config/database.js";
 
-const Usuarios = sequelize.define("Usuario", {
+export const Usuarios = sequelize.define("Usuario", {
     apellido: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -27,7 +27,7 @@ const Usuarios = sequelize.define("Usuario", {
     timestamps: true,
 } */);
 
-const perfil_estudiante = sequelize.define("perfil_estudiante",{
+export const perfil_estudiante = sequelize.define("perfil_estudiante",{
     genero: {
     type: DataTypes.ENUM("Masculino", "Femenino", "X"),
     allowNull: false,
@@ -66,5 +66,5 @@ const perfil_estudiante = sequelize.define("perfil_estudiante",{
   },
 });
 
-module.exports = Usuarios;
-module.exports = perfil_estudiante;
+/* module.exports = Usuarios;
+module.exports = perfil_estudiante; */

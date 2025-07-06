@@ -1,6 +1,6 @@
-import Usuarios from "../models/usuarios.js";
-import perfilEstudiante from "../models/usuarios.js";
-import {Op} from "sequelize";
+import { Usuarios } from "../models/usuarios.js";
+import { perfil_estudiante } from "../models/usuarios.js";
+/* import {Op} from "sequelize"; */
 
 // Mostrar todos los Usuarios
 export const getAllUsers = async (req, res) => {
@@ -8,7 +8,9 @@ export const getAllUsers = async (req, res) => {
     const usuarios = await Usuarios.findAll();
     return res.status(200).json(usuarios);
   } catch (error) {
-    return res.status(500).json({ error: "No se pudo obtener todos los usuarios" });
+    return res
+      .status(500)
+      .json({ error: "No se pudo obtener todos los usuarios" });
   }
 };
 
@@ -62,10 +64,14 @@ export const createUser = async (req, res) => {
         return res.status(400).json({ error: "Faltan campos obligatorios" });
       }
       if (!Number.isInteger(dni)) {
-        return res.status(400).json({ error: "El DNI debe ser un número entero" });
+        return res
+          .status(400)
+          .json({ error: "El DNI debe ser un número entero" });
       }
       if (genero !== "Masculino" && genero !== "Femenino" && genero !== "X") {
-        return res.status(400).json({ error: "El género solo puede ser Masculino, Femenino o X" });
+        return res
+          .status(400)
+          .json({ error: "El género solo puede ser Masculino, Femenino o X" });
       }
       if (
         año !== "1°" &&
@@ -88,20 +94,19 @@ export const createUser = async (req, res) => {
       email,
       contraseña,
       role,
-      
-    })
-        if (role === "Estudiante") {
-        await perfilEstudiante.create({
-            genero,
-            dni,
-            domicilio,
-            traslado,
-            año,
-            curso,
-            telefono,
-            UsuarioId: nuevo_usuario.id
-        })
-    };
+    });
+    if (role === "Estudiante") {
+      await perfil_estudiante.create({
+        genero,
+        dni,
+        domicilio,
+        traslado,
+        año,
+        curso,
+        telefono,
+        UsuarioId: nuevo_usuario.id,
+      });
+    }
     return res.status(201).json(nuevo_usuario);
   } catch (error) {
     res.status(500).json({ error: "Error al crear el usuario" });
@@ -109,14 +114,14 @@ export const createUser = async (req, res) => {
 };
 
 // Modificar usuarios
-export const updateUsuario = async (req, res) => {
+export const updateUser = async (req, res) => {
   try {
     const usuario = await Usuarios.findByPk(req.params.id);
 
     if (!usuario) {
       return res.status(404).json({ error: "No se encontró al usuario" });
     }
-        const {
+    const {
       nombre,
       apellido,
       email,
@@ -130,72 +135,113 @@ export const updateUsuario = async (req, res) => {
       curso,
       telefono,
     } = req.body;
-    if (email && (await Usuarios.findOne({ where: { email, id: { Usuariosid: usuario.id } }}))) {
-        return res.status(400).json({error: "El email ya se encuentra registrado" })
-    };
-    if (usuario.role === "Estudiante"){
-        if (dni && (await perfilEstudiante.findOne({ where: { dni, id: { Usuariosid: usuario.id } }}))) {
-            return res.status(400).json({error: "El dni ya se encuentra registrado" })
-        };
-        if (telefono && (await perfilEstudiante.findOne({ where: { telefono, id: { Usuariosid: usuario.id } }}))) {
-            return res.status(400).json({error: "El telefono ya se encuentra registrado" })
-        };
-        if (dni && !Number.isInteger(dni)) {
-            return res.status(400).json({ error: "El DNI debe ser un número entero" });
-        }
-        if (genero && genero !== "Masculino" && genero !== "Femenino" && genero !== "X") {
-            return res.status(400).json({error: "El género solo puede ser Masculino, Femenino o X"})
-        };       
-    };
+    if (
+      email &&
+      (await Usuarios.findOne({
+        where: { email, id: { Usuariosid: usuario.id } },
+      }))
+    ) {
+      return res
+        .status(400)
+        .json({ error: "El email ya se encuentra registrado" });
+    }
+    if (usuario.role === "Estudiante") {
+      if (
+        dni &&
+        (await perfil_estudiante.findOne({
+          where: { dni, id: { Usuariosid: usuario.id } },
+        }))
+      ) {
+        return res
+          .status(400)
+          .json({ error: "El dni ya se encuentra registrado" });
+      }
+      if (
+        telefono &&
+        (await perfil_estudiante.findOne({
+          where: { telefono, id: { Usuariosid: usuario.id } },
+        }))
+      ) {
+        return res
+          .status(400)
+          .json({ error: "El telefono ya se encuentra registrado" });
+      }
+      if (dni && !Number.isInteger(dni)) {
+        return res
+          .status(400)
+          .json({ error: "El DNI debe ser un número entero" });
+      }
+      if (
+        genero &&
+        genero !== "Masculino" &&
+        genero !== "Femenino" &&
+        genero !== "X"
+      ) {
+        return res
+          .status(400)
+          .json({ error: "El género solo puede ser Masculino, Femenino o X" });
+      }
+    }
     await usuario.update({
-        nombre: nombre || usuario.nombre,
-        apellido: apellido || usuario.apellido,
-        email: email || usuario.email,
-        contraseña: contraseña || usuario.contraseña,
-        role: role || usuario.role,
+      nombre: nombre || usuario.nombre,
+      apellido: apellido || usuario.apellido,
+      email: email || usuario.email,
+      contraseña: contraseña || usuario.contraseña,
+      role: role || usuario.role,
     });
     if (usuario.role === "Estudiante") {
-        // Cree una constante perfil porque perfilEstudiante es un modelo (de usuarios.js) no un registro
-        const perfil = await perfilEstudiante.findOne({ where: { UsuarioId: usuario.id}});
-            if (perfil) { 
-                await perfil.update({
-                genero: genero || perfil.genero,
-                dni: dni || perfil.dni,
-                domicilio: domicilio || perfil.domicilio,
-                traslado: traslado || perfil.traslado,
-                año: año || perfil.año,
-                curso: curso || perfil.curso,
-                telefono: telefono || perfil.telefono,
-                });
-        return res.status(200).json({message: "El usuario del estudiante se ha actualizado exitosamente", perfil})
-        };
-    };
-    return res.status(200).json({message: "El usuario se ha actualizado exitosamente", usuario,})
+      // Cree una constante perfil porque perfil_estudiante es un modelo (de usuarios.js) no un registro
+      const perfil = await perfil_estudiante.findOne({
+        where: { UsuarioId: usuario.id },
+      });
+      if (perfil) {
+        await perfil.update({
+          genero: genero || perfil.genero,
+          dni: dni || perfil.dni,
+          domicilio: domicilio || perfil.domicilio,
+          traslado: traslado || perfil.traslado,
+          año: año || perfil.año,
+          curso: curso || perfil.curso,
+          telefono: telefono || perfil.telefono,
+        });
+        return res.status(200).json({
+          message: "El usuario del estudiante se ha actualizado exitosamente",
+          perfil,
+        });
+      }
+    }
+    return res
+      .status(200)
+      .json({ message: "El usuario se ha actualizado exitosamente", usuario });
   } catch (error) {
-    return res.status(500).json({error: "No se pudo actualizar el usuario"})
+    return res.status(500).json({ error: "No se pudo actualizar el usuario" });
   }
 };
 
-
 // Eliminar estudiantes
-export const deleteUsuario = async (req, res) => {
+export const deleteUser = async (req, res) => {
   try {
     const usuario = await Usuarios.findByPk(req.params.id);
     if (!usuario) {
-    return res.status(404).json({ error: "No se encontró al usuario" });
-    };
+      return res.status(404).json({ error: "No se encontró al usuario" });
+    }
     if (usuario.role === "Estudiante") {
-        // Cree otra vez la const perfil porque en los controladores estos no se heredan, hay que declararlos cada vez que se necesite
-        const perfilDestroy = await perfilEstudiante.findOne({ where: {UsuarioId: usuario.id}})
-        if (!perfilDestroy) {
-            return res.status(404).json({error: "No se encontró al estudiante"})
-        };
-        await perfilDestroy.destroy();
-        return res.status(200).json({ message: "Se eliminó al estudiante exitosamente " })
-    };
+      // Cree otra vez la const perfil porque en los controladores estos no se heredan, hay que declararlos cada vez que se necesite
+      const perfilDestroy = await perfil_estudiante.findOne({
+        where: { UsuarioId: usuario.id },
+      });
+      if (!perfilDestroy) {
+        return res.status(404).json({ error: "No se encontró al estudiante" });
+      }
+      await perfilDestroy.destroy();
+      return res
+        .status(200)
+        .json({ message: "Se eliminó al estudiante exitosamente " });
+    }
     await usuario.destroy();
-    return res.status(200).json({ message: "Se eliminó al usuario exitosamente" });
-
+    return res
+      .status(200)
+      .json({ message: "Se eliminó al usuario exitosamente" });
   } catch (error) {
     return res.status(500).json({ error: "No se pudo eliminar al estudiante" });
   }
