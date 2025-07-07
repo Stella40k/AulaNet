@@ -35,7 +35,6 @@ export const createUser = async (req, res) => {
       apellido,
       email,
       contraseña,
-      role,
       genero,
       dni,
       domicilio,
@@ -47,22 +46,11 @@ export const createUser = async (req, res) => {
 
     console.log(req.body);
 
-    if (!nombre || !apellido || !email || !contraseña || !role) {
+    if (!nombre || !apellido || !email || !contraseña) {
       return res.status(400).json({ error: "Faltan campos obligatorios" });
     }
-
-    if (role === "Estudiante") {
-      if (
-        !genero ||
-        !dni ||
-        !domicilio ||
-        !traslado ||
-        !año ||
-        !curso ||
-        !telefono
-      ) {
-        return res.status(400).json({ error: "Faltan campos obligatorios" });
-      }
+ {
+     
       if (!Number.isInteger(dni)) {
         return res
           .status(400)
@@ -93,20 +81,8 @@ export const createUser = async (req, res) => {
       nombre,
       email,
       contraseña,
-      role,
     });
-    if (role === "Estudiante") {
-      await perfil_estudiante.create({
-        genero,
-        dni,
-        domicilio,
-        traslado,
-        año,
-        curso,
-        telefono,
-        UsuarioId: nuevo_usuario.id,
-      });
-    }
+
     return res.status(201).json(nuevo_usuario);
   } catch (error) {
     res.status(500).json({ error: "Error al crear el usuario" });
@@ -126,7 +102,6 @@ export const updateUser = async (req, res) => {
       apellido,
       email,
       contraseña,
-      role,
       genero,
       dni,
       domicilio,
@@ -145,49 +120,12 @@ export const updateUser = async (req, res) => {
         .status(400)
         .json({ error: "El email ya se encuentra registrado" });
     }
-    if (usuario.role === "Estudiante") {
-      if (
-        dni &&
-        (await perfil_estudiante.findOne({
-          where: { dni, id: { Usuariosid: usuario.id } },
-        }))
-      ) {
-        return res
-          .status(400)
-          .json({ error: "El dni ya se encuentra registrado" });
-      }
-      if (
-        telefono &&
-        (await perfil_estudiante.findOne({
-          where: { telefono, id: { Usuariosid: usuario.id } },
-        }))
-      ) {
-        return res
-          .status(400)
-          .json({ error: "El telefono ya se encuentra registrado" });
-      }
-      if (dni && !Number.isInteger(dni)) {
-        return res
-          .status(400)
-          .json({ error: "El DNI debe ser un número entero" });
-      }
-      if (
-        genero &&
-        genero !== "Masculino" &&
-        genero !== "Femenino" &&
-        genero !== "X"
-      ) {
-        return res
-          .status(400)
-          .json({ error: "El género solo puede ser Masculino, Femenino o X" });
-      }
-    }
     await usuario.update({
       nombre: nombre || usuario.nombre,
       apellido: apellido || usuario.apellido,
+      dni: dni || usuario.dni,
       email: email || usuario.email,
       contraseña: contraseña || usuario.contraseña,
-      role: role || usuario.role,
     });
     if (usuario.role === "Estudiante") {
       // Cree una constante perfil porque perfil_estudiante es un modelo (de usuarios.js) no un registro
