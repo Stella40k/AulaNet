@@ -8,10 +8,10 @@
 }
 
 header{
-    background-color: var(--celeste);
+/*     background-color: var(--celeste); */
     text-align: center;
     box-shadow: 4px 4px;
-    margin: 0;
+    margin: auto;
     padding: 20px 0 0;
     border-radius: 0 0 20px 20px;
 }
@@ -36,13 +36,6 @@ header{
 .nav-bar1 li a:hover{
     background-color: var(--rosa);
     color: var(--blanco);
-}
-.row{
-    background-color: var(--verde);
-    border-radius: 10px;
-    padding: 15px;
-    margin: 20px;
-    box-shadow: 4px 4px;
 }
 
 .grid-container {
