@@ -1,0 +1,474 @@
+:root {
+    /* Paleta de colores de la imagen */
+    --color-light-blue: #9DCEE0;
+    --color-light-green: #AFD96A;
+    --color-light-pink: #FFAEB5;
+    --color-white: #FFFFFF;
+    --color-dark-grey: #485A61;
+    --color-black: #000000;
+    --color-light-gray-bg: #F0F2F5; /* Fondo general */
+    --color-dark-purple: #483D8B; /* Color para el círculo de perfil */
+
+    /* Colores específicos de asistencia */
+    --green-attendance: #4CAF50; /* Presente */
+    --red-attendance: #F44336;   /* Ausente */
+    --blue-attendance: #2196F3;  /* Asistencia Justificada */
+    --gray-attendance: #B0BEC5;  /* Feriado/Finde */
+}
+
+body {
+    background-color: var(--color-light-gray-bg);
+    font-family: 'Arial', sans-serif; /* Puedes cambiar la fuente aquí, o importar Google Fonts */
+    color: var(--color-dark-grey);
+}
+
+/* Navbar General */
+.navbar {
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Navbar específica para solicitar_documento.html */
+.navbar-solicitud {
+    background-color: var(--color-dark-grey); /* Navbar en gris oscuro para esta página */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--color-black); /* Color del texto "AulaNet" por defecto */
+    margin-right: 2rem;
+}
+
+/* Navbar-brand específica para solicitar_documento.html */
+.navbar-solicitud .navbar-brand {
+    color: var(--color-white); /* Texto del logo blanco en navbar oscura */
+}
+
+.navbar-brand .logo-an {
+    background-color: var(--color-dark-grey); /* Fondo del logo AN por defecto */
+    color: var(--color-white);
+    padding: 0.5rem 0.7rem;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+
+/* Logo AN específico para solicitar_documento.html */
+.navbar-solicitud .navbar-brand .logo-an {
+    background-color: var(--color-light-blue); /* Logo AN en azul claro */
+    color: var(--color-dark-grey);
+}
+
+
+.navbar-nav .nav-link {
+    color: var(--color-dark-grey); /* Color de los enlaces de navegación */
+    font-weight: bold;
+    margin: 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-black);
+}
+
+.navbar-nav .nav-link.active {
+    border-bottom-color: var(--color-dark-grey); /* Borde inferior para el enlace activo */
+    color: var(--color-black);
+}
+
+/* Filter Button (general) */
+.filter-button {
+    background-color: var(--color-white);
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    color: var(--color-dark-grey);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Icon Circles (Notifications & Profile) */
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-dark-grey);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.icon-circle:hover {
+    background-color: #5a6e76; /* Tono más claro al pasar el ratón */
+}
+
+.notification-bell .bi {
+    font-size: 1.1rem;
+}
+
+.profile-pic-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-dark-purple);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-pic-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botón "Volver al Perfil" específico para solicitar_documento.html */
+.btn-volver {
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+.btn-volver:hover {
+    background-color: var(--color-light-blue);
+    color: var(--color-dark-grey);
+    border-color: var(--color-light-blue);
+}
+
+
+/* Main Content Wrapper (for profile page) */
+.profile-content-wrapper {
+    padding: 2.5rem 2rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap; /* Para responsive */
+    justify-content: center;
+}
+
+/* User Info Card (for profile page) */
+.user-info-card {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 2.5rem;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    width: 320px; /* Ancho fijo para la tarjeta de información */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0; /* No permitir que se encoja */
+}
+
+.user-avatar {
+    width: 110px;
+    height: 110px;
+    background-color: var(--color-light-green);
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-dark-grey);
+    font-size: 4rem; /* Icono de persona */
+}
+.user-avatar .bi {
+    font-size: 4rem;
+}
+
+.user-details p {
+    margin-bottom: 0.7rem;
+    color: var(--color-black);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.user-details .label {
+    font-weight: bold;
+    color: var(--color-dark-grey);
+    display: block; /* Para que el label esté en una línea separada */
+    margin-bottom: 0.2rem;
+}
+
+.btn-legajo {
+    background-color: var(--color-light-pink);
+    color: var(--color-dark-grey);
+    border: none;
+    padding: 0.8rem 2.5rem;
+    border-radius: 25px;
+    margin-top: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-legajo:hover {
+    background-color: #f7a0aa;
+    transform: translateY(-2px);
+}
+
+/* Data Cards Container (for profile page) */
+.data-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-grow: 1; /* Para que ocupe el espacio restante */
+    max-width: 650px; /* Ancho máximo para las tarjetas de datos */
+}
+
+.attendance-card, .notes-card {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem 2rem;
+}
+
+.card-title {
+    color: var(--color-light-pink);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Attendance Grid */
+.attendance-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.attendance-day {
+    font-weight: bold;
+    color: var(--color-dark-grey);
+    font-size: 0.9rem;
+    padding-bottom: 5px;
+}
+
+.attendance-status {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 auto; /* Centrar los círculos */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); /* Sutil sombra interna */
+}
+
+.status-green { background-color: var(--green-attendance); }
+.status-red { background-color: var(--red-attendance); }
+.status-blue { background-color: var(--blue-attendance); }
+.status-gray { background-color: var(--gray-attendance); }
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: var(--color-dark-grey);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.status-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Notes Grid */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 15px;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.note-item {
+    background-color: var(--color-light-green);
+    border: 1px solid #D5E7B0;
+    border-radius: 8px;
+    padding: 1rem 0.8rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-dark-grey);
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.note-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Request Document Button */
+.btn-request-document {
+    background-color: var(--color-light-pink);
+    color: var(--color-dark-grey);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 25px;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: fit-content;
+    align-self: flex-end;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-request-document:hover {
+    background-color: #f7a0aa;
+    transform: translateY(-2px);
+}
+
+/* Estilos específicos para solicitar_documento.html (movidos desde el HTML) */
+.form-container {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-top: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-container h2 {
+    color: var(--color-dark-grey);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.btn-submit-form {
+    background-color: var(--color-dark-grey); /* Cambiado de rosado a gris oscuro */
+    color: var(--color-white);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn-submit-form:hover {
+    background-color: #5a6e76; /* Tono más claro de gris al pasar el ratón */
+}
+
+
+/* Responsive adjustments (general) */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+
+    .navbar-nav {
+        margin-top: 1rem;
+    }
+
+    .profile-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 1rem;
+    }
+
+    .user-info-card, .data-cards-container {
+        width: 100%;
+        max-width: 500px; /* Limitar el ancho en pantallas medianas */
+    }
+
+    .btn-request-document {
+        align-self: center; /* Centrar el botón en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .navbar-brand .logo-an {
+        padding: 0.3rem 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .filter-button, .icon-circle, .profile-pic-circle {
+        margin-left: 0.5rem;
+    }
+
+    .navbar-nav .nav-link {
+        margin: 0 0.2rem;
+        font-size: 0.9rem;
+    }
+
+    .user-info-card {
+        padding: 1.5rem;
+    }
+
+    .user-avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 3rem;
+    }
+    .user-avatar .bi {
+        font-size: 3rem;
+    }
+
+    .user-details p {
+        font-size: 0.9rem;
+    }
+
+    .btn-legajo {
+        padding: 0.7rem 2rem;
+    }
+
+    .attendance-card, .notes-card {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .attendance-status {
+        width: 30px;
+        height: 30px;
+    }
+
+    .notes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+        gap: 10px;
+    }
+
+    .note-item {
+        font-size: 1.1rem;
+        padding: 0.7rem 0.5rem;
+    }
+
+    .legend {
+        font-size: 0.8rem;
+        gap: 10px;
+    }
+}

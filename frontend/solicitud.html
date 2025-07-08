@@ -8,39 +8,46 @@
     <link rel="stylesheet" href="assets/css/estilosoli.css">
 </head>
 <body>
-    <form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Nombre del Alumno</label>
-    <input type="Juan Perez" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Curso del alumno</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">Documento solicitado</label>
-    <select id="inputState" class="form-select">
-      <option selected>Selecciona</option>
-      <option>Certificado de Alumno Regular</option>
-      <option>Analítico Parcial</option>
-      <option>Analítico Final</option>
-      <option>Otro (Específicar)</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Motivo de la Solicitud</label>
-    <input type="Ej: Presentar en la Universidad, Trámite de Beca, etc." class="form-control" id="inputZip">
-  </div>
-                  <div class="col-12">
+    <div class="container">
+        <div class="form-container">
+            <h2>Solicitar Documento</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="nombreAlumno" class="form-label">Nombre del Alumno:</label>
+                    <input type="text" class="form-control" id="nombreAlumno" placeholder="Nombre completo del alumno" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cursoAlumno" class="form-label">Curso:</label>
+                    <input type="text" class="form-control" id="cursoAlumno" placeholder="Ej: 3º A - 2025" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tipoDocumento" class="form-label">Tipo de Documento Requerido:</label>
+                    <select class="form-select" id="tipoDocumento" required>
+                        <option selected disabled value="">Seleccione...</option>
+                        <option>Certificado de Alumno Regular</option>
+                        <option>Analítico Parcial</option>
+                        <option>Analítico Final</option>
+                        <option>Constancia de Cuil</option>
+                        <option>Otro (especificar)</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="motivo" class="form-label">Motivo de la Solicitud:</label>
+                    <textarea class="form-control" id="motivo" rows="3" placeholder="Ej: Para presentar en la universidad, para trámite de beca, etc." required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="observaciones" class="form-label">Observaciones (opcional):</label>
+                    <textarea class="form-control" id="observaciones" rows="2" placeholder="Cualquier información adicional relevante"></textarea>
+                </div>
+                <div class="mb-3">
                     <label for="fechaNecesidad" class="form-label">Fecha Límite (si aplica):</label>
                     <input type="date" class="form-control" id="fechaNecesidad">
                 </div>
-      </label>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-submit-form">Enviar Solicitud</button>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-  </div>
-</form>
 </body>
 </html>
