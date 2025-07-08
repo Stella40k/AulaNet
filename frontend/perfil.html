@@ -45,32 +45,116 @@
             <!-- ASISTENCIA -->
 <div class="card">
     <h3>Asistencia del alumno</h3>
-    <p>Planilla de faltas y asistencias</p>
+    <p>Mes: Junio</p>
 
-    <div class="grid text-center" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px;">
-        <div>Ene</div><div>Feb</div><div>Mar</div><div>Abr</div><div>May</div><div>Jun</div>
-        <div>Jul</div><div>Ago</div><div>Sep</div><div>Oct</div><div>Nov</div><div>Dic</div>
-    </div>
-
-    <div class="grid text-center mt-2" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px;">
-        <div class="text-success fw-bold">P</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-danger fw-bold">F</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-danger fw-bold">F</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-success fw-bold">P</div>
-        <div class="text-success fw-bold">P</div>
-    </div>
+    <table class="asistencia-tabla">
+        <thead>
+            <tr>
+                <th>Lun</th>
+                <th>Mar</th>
+                <th>Mié</th>
+                <th>Jue</th>
+                <th>Vie</th>
+                <th>Sáb</th>
+                <th>Dom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Semana 1 -->
+            <tr>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-rojo"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <!-- Semana 2 -->
+            <tr>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-rojo"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-rojo"></span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <!-- Semana 3 -->
+            <tr>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <!-- Semana 4 -->
+            <tr>
+                <td><span class="punto-rojo"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td><span class="punto-rojo"></span></td>
+                <td><span class="punto-verde"></span></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
                 <div class="card">
                     <h3>Libreta virtual</h3>
                     <p>Planilla de notas</p>
+                    <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Materia</th>
+                        <th>1° Trim.</th>
+                        <th>2° Trim.</th>
+                        <th>3° Trim.</th>
+                        <th>Promedio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Matemática</td>
+                        <td class="table-success">8</td>
+                        <td class="table-warning">6</td>
+                        <td class="table-danger">4</td>
+                        <td class="table-secondary">6</td>
+                    </tr>
+                    <tr>
+                        <td>Lengua</td>
+                        <td class="table-success">9</td>
+                        <td class="table-success">10</td>
+                        <td class="table-success">9</td>
+                        <td class="table-primary">9.3</td>
+                    </tr>
+                    <tr>
+                        <td>Biología</td>
+                        <td class="table-warning">7</td>
+                        <td class="table-warning">6</td>
+                        <td class="table-success">8</td>
+                        <td class="table-secondary">7</td>
+                    </tr>
+                    <tr>
+                        <td>Físico-Química</td>
+                        <td class="table-danger">4</td>
+                        <td class="table-danger">3</td>
+                        <td class="table-warning">5</td>
+                        <td class="table-danger">4</td>
+                    </tr>
+                    <tr>
+                        <td>Educación Física</td>
+                        <td class="table-success">10</td>
+                        <td class="table-success">10</td>
+                        <td class="table-success">10</td>
+                        <td class="table-primary">10</td>
+                    </tr>
+                </tbody>
+            </table>
                 </div>
                 <div class="text-center mt-4">
                     <a class="btn btn-primary" href="documentos.html">Ver Documentos</a>
@@ -78,5 +162,6 @@
                 </div>
             </div>
     </div>
+    
 </body>
 </html>

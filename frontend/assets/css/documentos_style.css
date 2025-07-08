@@ -1,0 +1,189 @@
+:root{
+    --blanco: #ffffff;
+    --rosa: #ffaeb5;
+    --verde: #b4e06e; 
+    --celeste: #cae3ec;
+    --gris: #485a61;
+    --negro: #000000;
+}
+
+header{
+    background-color: var(--celeste);
+    text-align: center;
+    box-shadow: 4px 4px;
+    margin: 0;
+    padding: 20px 0 0;
+    border-radius: 0 0 20px 20px;
+}
+
+
+.nav-bar1 ul{
+    display: flex;
+    gap: 30px;
+    padding: 1rem;
+    margin-top: auto;
+    justify-content:center ;
+}
+
+.nav-bar1 li a{
+    text-decoration: none;
+    color:#ffffff;
+/*     background-color: #ffaeb5; */
+    border-radius: 10px 10px 0 0;
+    transition: background-color 0.3s;
+}
+
+.nav-bar1 li a:hover{
+    background-color: var(--rosa);
+    color: var(--blanco);
+}
+.row{
+    background-color: var(--verde);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px;
+    box-shadow: 4px 4px;
+}
+
+.grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 1rem;
+      height: 100vh;
+      padding: 1rem;
+    }
+
+    .item-1 {
+      grid-column: 1 / 6; /* col-span-5 */
+      grid-row: 1 / 2;
+      background-color: lightblue;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 15px;
+       box-shadow: 4px 4px;
+    }
+
+    .item-4 {
+      grid-column: 1 / 6; /* col-span-5 */
+      grid-row: 2 / 6;    /* row-span-4 desde fila 2 */
+      background-color: khaki;
+      text-align: center;
+      padding: 1rem;
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
+
+
+
+
+.item-4 {
+    grid-column: 1 / 6; /* Ocupa todas las 5 columnas */
+    grid-row: 2 / 6;    /* Ocupa las filas 2 a 5 */
+    background-color: var(--rosa); /* Este es tu fondo amarillo */
+    padding: 1rem;
+    border-radius: 15px;
+    /* MODIFICAR AQUÍ PARA CENTRAR CARTAS DENTRO DE item-4 */
+    display: flex; /* Usamos flexbox para centrar las cartas */
+    flex-wrap: wrap; /* Permite que las cartas salten de línea */
+    justify-content: center; /* Centra horizontalmente las cartas dentro de item-4 */
+    align-items: flex-start; /* Alinea las cartas al inicio verticalmente */
+    gap: 20px; /* Espacio entre las cartas, ajusta a tu gusto */
+}
+
+
+/* --- Estilos del sidebar (Si lo vas a usar, deberías tener un HTML con sidebar-layout) --- */
+/* Si estás usando la estructura con aside.sidebar y main.content, estas reglas son relevantes. */
+/* Asegúrate de que tu HTML refleje la estructura de sidebar-layout */
+.sidebar-layout {
+    display: flex; /* O grid, dependiendo de tu diseño principal */
+    width: 100%; /* Asegúrate de que ocupe todo el ancho */
+    height: 100vh; /* Si quieres que el layout principal ocupe toda la altura de la vista */
+}
+
+
+/* Este es el contenedor de las cartas, DENTRO DE ITEM-4 */
+#documentosContainer.doc-grid {
+    /* Si ya usaste display: flex en item-4, esto no es estrictamente necesario aquí,
+       pero puede servir para afinar el layout de las cartas si tienen un ancho fijo. */
+    display: grid;  /* Si prefieres grid dentro del contenedor de cartas */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* Ejemplo para cuadrícula responsive */
+    gap: 20px; /* Si usas grid, el gap va aquí */
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible en item-4 */
+    max-width: 1200px; /* O un ancho máximo para centrar un grupo grande de cartas */
+    /* margin: 0 auto; */ /* Para centrar el contenedor si tiene un max-width */
+}
+
+.document-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem; /* Relleno interno de la carta */
+    width: 280px; /* Ancho fijo para cada carta, ajusta a tu gusto */
+    min-width: 250px; 
+    text-align: left; /* Alinea el texto dentro de la carta a la izquierda */
+    display: flex; /* Para organizar el contenido dentro de la carta */
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el botón "Ver documento" hacia abajo */
+    margin-bottom: 20px; /* Si no usas gap en el padre, añade margen entre cartas */
+}
+
+.document-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+.document-card p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 1rem; /* Espacio entre descripción y botón */
+    flex-grow: 1; /* Permite que la descripción ocupe espacio, empujando el botón */
+}
+
+/* Estilo para el botón "Ver documento" dentro de la carta */
+.btn-ver-documento { /* Esta es la clase que usé en el ejemplo de JS */
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    background-color: #007bff; /* Un azul de Bootstrap */
+    color: white;
+    border: none;
+    align-self: flex-start; /* Alinea el botón al inicio de la carta */
+}
+
+.btn-ver-documento:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- Estilos de los enlaces de tipo de documento (Datos personales, escolares, médicos) --- */
+.links {
+    margin-top: 1.5rem; /* Espacio encima de estos enlaces */
+    display: flex;
+    justify-content: center; /* Centra estos enlaces */
+    gap: 20px; /* Espacio entre los enlaces */
+    flex-wrap: wrap; /* Si hay muchos, que se envuelvan */
+}
+.links a {
+    color: #007bff; /* Color de enlace predeterminado de Bootstrap */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.links a:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}

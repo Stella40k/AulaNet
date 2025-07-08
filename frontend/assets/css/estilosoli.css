@@ -23,63 +23,7 @@ body {
 }
 
 /* Navbar General */
-.navbar {
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 
-/* Navbar específica para solicitar_documento.html */
-.navbar-solicitud {
-    background-color: var(--color-dark-grey); /* Navbar en gris oscuro para esta página */
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.8rem;
-    color: var(--color-black); /* Color del texto "AulaNet" por defecto */
-    margin-right: 2rem;
-}
-
-/* Navbar-brand específica para solicitar_documento.html */
-.navbar-solicitud .navbar-brand {
-    color: var(--color-white); /* Texto del logo blanco en navbar oscura */
-}
-
-.navbar-brand .logo-an {
-    background-color: var(--color-dark-grey); /* Fondo del logo AN por defecto */
-    color: var(--color-white);
-    padding: 0.5rem 0.7rem;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-}
-
-/* Logo AN específico para solicitar_documento.html */
-.navbar-solicitud .navbar-brand .logo-an {
-    background-color: var(--color-light-blue); /* Logo AN en azul claro */
-    color: var(--color-dark-grey);
-}
-
-
-.navbar-nav .nav-link {
-    color: var(--color-dark-grey); /* Color de los enlaces de navegación */
-    font-weight: bold;
-    margin: 0 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 3px solid transparent;
-    transition: border-bottom-color 0.3s ease, color 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover {
-    color: var(--color-black);
-}
-
-.navbar-nav .nav-link.active {
-    border-bottom-color: var(--color-dark-grey); /* Borde inferior para el enlace activo */
-    color: var(--color-black);
-}
 
 /* Filter Button (general) */
 .filter-button {

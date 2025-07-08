@@ -85,6 +85,8 @@ header{
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 4px 4px;
+  height: 900px;
+  
 }
 
 /*para lo del curso y seccion*/
@@ -160,8 +162,9 @@ header{
   background-color: white;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 5rem;
-  width: 75%; /* Ocupa casi la mitad del ancho */
+  padding: 1rem;
+  margin: 1rem;
+  width: 500; /* Ocupa casi la mitad del ancho */
   min-width: 300px;
   box-shadow: 4px 4px;
 }
@@ -189,7 +192,7 @@ header{
 }
 
 .btn-primary {
-  background-color: #c9863f;
+  background-color: #40a42e;
   color: white;
   border: none;
 }
@@ -198,3 +201,42 @@ header{
   background-color: #7c4f13;
   color: white;
 }
+
+.punto-verde {
+        width: 12px;
+        height: 12px;
+        background-color: green;
+        border-radius: 50%;
+        display: inline-block;
+        margin: auto;
+    }
+
+    .punto-rojo {
+        width: 12px;
+        height: 12px;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        margin: auto;
+    }
+
+    .asistencia-tabla {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    .asistencia-tabla th,
+    .asistencia-tabla td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        height: 40px;
+    }
+
+    .asistencia-tabla th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    

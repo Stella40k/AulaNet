@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos del alumno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/assets/css/sesion_style.css">
+    <link rel="stylesheet" href="/frontend/assets/css/documentos_style.css">
+
+</head>
+<body>
+        <header class="nav-bar0 nav-bar0">
+            <nav class="navbar navbar-expand-lg body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="perfil.html">
+                        <img src="assets/images/snoopy.jfif" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                        AulaNet
+                    </a>
+                      <ul class="nav nav-tabs">
+                          <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="tablon.html">Tablón</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-dark" href="perfil.html">Perfil</a>
+                          </li>
+                      </ul>
+                    </div>
+        </header>
+    <div class="grid-container">
+        <div class="item-1">
+            <h2 class="text-center">Legajo del alumno</h2>
+            <input type="text" id="searchInput" placeholder="Buscar documentos...">
+            <div class="links">
+                <a href="/frontend/assets/pdf/datos_personales/frente_dni.pdf">Datos personales</a>
+                <a href="/frontend/assets/pdf/documentos_escolares/#">Documentos escolares</a>
+                <a href="/frontend/assets/pdf/doxumentos_medicos/#">Documentos Medicos</a>
+            </div>
+
+        </div>
+        
+        <div class="item-4">
+            <div id="documentosContainer" class="doc-grid"></div>
+          </div>
+        </div>
+        
+        <script src="./landinpage.js"></script> 
+  </body>
+</html> 
