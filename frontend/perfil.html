@@ -29,7 +29,7 @@
         <div class="grid-container">
             <aside class ="sidebar">
             <div class="profile-card">
-                <img class="profile-img" src="/frontend/img/7b12d287221c0adf5b4efcdf326c178f.jpg" alt="foto de perfil">
+                <img class="profile-img" src="assets/images/snooopy.jfif" alt="foto de perfil">
                 <h2 class="username">Laura Acosta</h2>
                     <p class ="mail">lau@example.com</p>
                     <div class="row-inline">
@@ -42,12 +42,32 @@
             </div>
         </aside>
         <div class="content" id="cartas">
-            <div class="card-container">
-                <!-- asistencia y faltas -->
-                <div class="card">
-                    <h3>Asistencia del alumno</h3>
-                    <p>Planilla de faltas y asistencias</p>
-                </div>
+            <!-- ASISTENCIA -->
+<div class="card">
+    <h3>Asistencia del alumno</h3>
+    <p>Planilla de faltas y asistencias</p>
+
+    <div class="grid text-center" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px;">
+        <div>Ene</div><div>Feb</div><div>Mar</div><div>Abr</div><div>May</div><div>Jun</div>
+        <div>Jul</div><div>Ago</div><div>Sep</div><div>Oct</div><div>Nov</div><div>Dic</div>
+    </div>
+
+    <div class="grid text-center mt-2" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px;">
+        <div class="text-success fw-bold">P</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-danger fw-bold">F</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-danger fw-bold">F</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-success fw-bold">P</div>
+        <div class="text-success fw-bold">P</div>
+    </div>
+</div>
+
                 <div class="card">
                     <h3>Libreta virtual</h3>
                     <p>Planilla de notas</p>
